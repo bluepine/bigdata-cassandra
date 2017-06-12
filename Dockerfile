@@ -1,6 +1,6 @@
 FROM bluepine/bigdata-alpine-base
 
-MAINTAINER Subham Rakshit
+MAINTAINER Song Wei
 
 ENV CASSANDRA_HOME="/opt/cassandra" \
     CASSANDRA_VERSION="2.1.17" \
@@ -19,4 +19,7 @@ RUN chmod +x /opt/cassandra-download.sh \
     && addgroup cassandra \
     && adduser -S -G cassandra cassandra \
     && chown cassandra:cassandra -R /opt/cassandra* \
-    && chmod 754 /opt/cassandra*
+    && chmod 754 /opt/cassandra* \
+    && /opt/cassandra-properties.sh
+
+USER cassandra

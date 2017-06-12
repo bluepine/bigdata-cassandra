@@ -20,7 +20,8 @@ RUN chmod +x /opt/cassandra-download.sh \
     && adduser -S -G cassandra cassandra \
     && chown cassandra:cassandra -R /opt/cassandra* \
     && chmod 754 /opt/cassandra* \
-    && sync \
-    && /opt/cassandra-properties.sh
+    && sync
 
 USER cassandra
+
+CMD ["/opt/cassandra-startup.sh"]
